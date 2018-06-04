@@ -13,9 +13,9 @@ class App extends Component {
 
   }
 
-  handleInputChange (event) {
+  handleInputAdd(event) {
       
-    this.setState({
+    this.State({
       [event.target.name]:event.target.value
     })
     
@@ -25,12 +25,8 @@ class App extends Component {
   addNameHandler (event){
     console.log('click!!!')
     if(this.state.item_adicionar !==""){
-      this.state.list.push({
-        nome:this.state.item_adicionar,
-        
-
-
-      })
+      this.state.list.push
+      (this.state.item_adicionar)
       this.setState({
           
         lista:this.state.lista, 
@@ -52,7 +48,7 @@ class App extends Component {
         <List list={this.state.list}/>
         
         <form onSubmit={this.addNameHandler}>
-        <input type="text" name="item_adicionar" value={this.state.item_adicionar} onChange={this.handleInputChange}/>
+        <input type="text" name="item_adicionar" value={this.state.item_adicionar} onChange={this.handleInputAdd}/>
         
         <input type="submit" name="frase_submit" />
         
