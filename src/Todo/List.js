@@ -1,35 +1,54 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Item from './Item'
 
 
-
-const List = ({list})=> {
-   
-    return (
+class List  extends Component {
+    constructor(props){
+      super(props)
+    
+    
+    this.handleRemove=this.handleRemove.bind(this);
+  
+    }
+    
+  
+    
+  
+    
+    handleRemove () {
+        
+        !this.props.onRemove || this.props.onRemove()
+      }
+  
+  
+    render() {
+      return (
         <div>
-            {
-                list.map((item, index) => {
-                return( 
-                <Item 
+        {
+            this.props.list.map((item, index) => {
+            return( 
+            <Item 
                 key={"frase" + index}
-                Changed={this.handleEdit.bind(this)}
-                Item={this.state.name} 
-                />
-            )
-                
-                
-               
-
-
-
-            })
+                 onChange={this.onChange}
+                data={item} 
+                onRemove={this.handleRemove.bind(this, index)}
+            />
+        )
             
-        }
-        </div>
+            
+           
 
 
-    )
-}
+
+        })
+        
+    }
+    </div>
+
+      );
+    }
+  }
+
 
 export default List;
 
