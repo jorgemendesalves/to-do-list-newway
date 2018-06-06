@@ -3,21 +3,29 @@ import React, { Component } from 'react';
 class Item extends Component {
     constructor(props){
       super(props)
-      this.state={
-        list : [],
-        item_alterar:"",
-        item_adicionar:""
-  
-    }
-    
+      
+      
+    this.handleEdit =this.handleEdit.bind(this);
     this.handleRemove =this.handleRemove.bind(this);
     this.handleInputEdit=this.handleInputEdit.bind(this);
+    
   
     }
     handleRemove () {
         
         !this.props.onRemove || this.props.onRemove()
       }
+
+     
+    handleEdit () {
+        
+      !this.props.onEdit || this.props.onEdit()
+    }  
+
+      
+
+
+
 
       handleInputEdit(event) {
         this.setState({
@@ -39,8 +47,8 @@ class Item extends Component {
             </span>
             
         
-           
-            <input type="text" name="item_alterar" value={this.state.item_alterar} onChange={this.handleInputAdd}/>
+            <button onClick={this.handleEdit}>Edit</button>
+            <input type="text" name="item_alterar" value={this.state.item_alterar} onChange={this.handleInputEdit}/>
             <button onClick={this.handleRemove}>Remove</button>
             
            

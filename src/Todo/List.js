@@ -5,12 +5,18 @@ import Item from './Item'
 class List  extends Component {
     constructor(props){
       super(props)
+      
     
-    
-    this.handleRemove=this.handleRemove.bind(this);
+      this.handleEdit =this.handleEdit.bind(this);
+      this.handleRemove =this.handleRemove.bind(this);
   
     }
     
+    handleEdit () {
+        
+      !this.props.onEdit || this.props.onEdit()
+    }  
+
   
     
   
@@ -28,11 +34,12 @@ class List  extends Component {
             this.props.list.map((item, index) => {
             return( 
             <Item 
-                key={"frase" + index}
-                 onChange={this.onChange}
-                data={item} 
-                onRemove={this.handleRemove.bind(this, index)}
-            />
+              key={"frase" + index}
+              onChange={this.onChange}
+              data={item} 
+              onRemove={this.handleRemove.bind(this, index)}
+              onEdit={this.handleEdit.bind(this,index)}
+              />
         )
             
             
