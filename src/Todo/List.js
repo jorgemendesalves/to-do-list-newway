@@ -8,22 +8,23 @@ class List  extends Component {
       
     
       this.handleEdit =this.handleEdit.bind(this);
-      this.handleRemove =this.handleRemove.bind(this);
+    
   
     }
     
-    handleEdit () {
+    handleEdit (index, newdata) {
         
-      !this.props.onEdit || this.props.onEdit()
+      !this.props.onEdit || this.props.onEdit(index, newdata)
+      
     }  
 
   
     
   
     
-    handleRemove () {
+    handleRemove (index) {
         
-        !this.props.onRemove || this.props.onRemove()
+        !this.props.onRemove || this.props.onRemove(index)
       }
   
   
@@ -32,6 +33,7 @@ class List  extends Component {
         <div>
         {
             this.props.list.map((item, index) => {
+              
             return( 
             <Item 
               key={"frase" + index}

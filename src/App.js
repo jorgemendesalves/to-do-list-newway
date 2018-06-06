@@ -11,46 +11,34 @@ class App extends Component {
     this.state={
       list : [],
       item_adicionar:"",
-      item_alterar:"",
+      
   
 
   }
   
   this.handleInputAdd=this.handleInputAdd.bind(this);
   this.addNameHandler=this.addNameHandler.bind(this);
-  this.handleEdit =this.handleEdit.bind(this);
+ 
     this.handleRemove =this.handleRemove.bind(this);
+    this.handleEdit =this.handleEdit.bind(this);
   }
   
  
 
 
   handleRemove(index){
-    this.state.list.splice(index ,1)
-      this.setState({list: this.state.list})
-
+    let list = this.state.list.slice()
+    list.splice(index ,1)
+      this.setState({list})
   }
 
-  handleEdit(index){
-   
+  handleEdit (index, data) {
+    let list = this.state.list.slice()
+    list[index] = data;
+      this.setState({list})
+  }
 
-    const list = this.state.list
-    
-    list[index] = this.state.item_alterar
-    console.log(this.state.item_alterar)
-   
-    this.setState({
-      
-      list:this.state.list, 
-      
-     
-      
-    })
-    
-    
-    
 
-}
 
   handleInputAdd(event) {
     this.setState({
@@ -74,11 +62,12 @@ class App extends Component {
       })
 
   }
-  console.log(this.state.list)
+  
 }
 
 
   render() {
+    console.log(this.state.list)
     return (
       <div className="App">
         <header className="App-header">
